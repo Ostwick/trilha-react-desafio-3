@@ -1,38 +1,56 @@
-import { useNavigate  } from "react-router-dom";
-import bannerImage from '../../assets/banner.png'
+import { useNavigate } from "react-router-dom"; // Hook para navegação
+import bannerImage from '../../assets/banner.png'; // Imagem do banner
 
-import { Button } from '../../components/Button';
+import { Button } from '../../components/Button'; // Botão reutilizável
+import { Header } from '../../components/Header'; // Cabeçalho reutilizável
 
-import { Header } from '../../components/Header';
-
-import { Container, Title, TitleHighlight, TextContent } from './styles';
+import { Container, Title, TitleHighlight, TextContent } from './styles'; // Estilos específicos
 
 const Home = () => {
+    const navigate = useNavigate(); // Hook do React Router para navegação
 
-    const navigate = useNavigate();
-
+    // Função para navegar para a página de login
     const handleClickSignIn = () => {
-        navigate('/login')
-    }
+        navigate('/login'); // Redireciona para a rota "/login"
+    };
 
-    return (<>
-        <Header />
-        <Container>
-            <div>
-                <Title>
-                    <TitleHighlight>
-                        Implemente <br />
-                    </TitleHighlight>
-                o seu futuro global agora!</Title>
-                <TextContent>Domine as tecnologias utilizadas pelas empresas mais inovadoras do mundo e encare seu novo
-                     desafio profissional, evoluindo em comunidade com os melhores experts.</TextContent>
-                <Button title="Começar agora" variant="secondary" onClick={handleClickSignIn}/>
-            </div>
-            <div>
-                <img src={bannerImage} alt="Imagem principal do site." />
-            </div>
-        </Container>
-    </>)
-}
+    return (
+        <>
+            {/* Cabeçalho da página */}
+            <Header />
 
-export { Home }
+            {/* Conteúdo principal */}
+            <Container>
+                <div>
+                    {/* Título principal */}
+                    <Title>
+                        <TitleHighlight>
+                            Implemente <br />
+                        </TitleHighlight>
+                        o seu futuro global agora!
+                    </Title>
+
+                    {/* Texto descritivo */}
+                    <TextContent>
+                        Domine as tecnologias utilizadas pelas empresas mais inovadoras do mundo e encare seu novo
+                        desafio profissional, evoluindo em comunidade com os melhores experts.
+                    </TextContent>
+
+                    {/* Botão para redirecionar ao login */}
+                    <Button
+                        title="Começar agora" // Texto do botão
+                        variant="secondary" // Estilo variante
+                        onClick={handleClickSignIn} // Ação ao clicar
+                    />
+                </div>
+
+                {/* Imagem principal */}
+                <div>
+                    <img src={bannerImage} alt="Imagem principal do site." />
+                </div>
+            </Container>
+        </>
+    );
+};
+
+export { Home };
